@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MbtiService {
@@ -34,8 +35,12 @@ public class MbtiService {
     }
 
 
-    public Integer createInfo(MbtiDTO mbti) {
-        Mbti mb = mbtiRepository.save(new Mbti(mbti.getMbti(), mbti.getInfo()));
+    public int createInfo(MbtiDTO mbti) {
+        Mbti mb = new Mbti(mbti.getMbti(), mbti.getInfo());
+        if(mb.getMbti() == null || mb.getInfo() == null){
+            return 1;
+        }
+        mbtiRepository.save(mb);
         return 0;
     }
 

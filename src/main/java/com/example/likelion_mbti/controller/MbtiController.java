@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 public class MbtiController {
 
     @Autowired
@@ -20,15 +20,19 @@ public class MbtiController {
         return mbtiService.index();
     }
 
-    @GetMapping("/mbti/{mbti}")
+    @GetMapping("/mbti/{mbti}")     //특정 MBTI의 특징 랜덤 추출, return 타입을 String으로 바꾸고 특징을 보낼 때 특징이 있으면 toString으로, 없으면 문자열로 없음 문자 보내기
     public Mbti getMbti(@PathVariable String mbti){
         Mbti newMbti = mbtiService.getMbti(mbti);
+        if(newMbti == null) return null;
+        
         return newMbti;
     }
 
     @PostMapping("/mbti")   //성공적으로 들어갔는지 repository의 반환값을 통해 service에서 0 or 1을 반환하도록 하기
-    public Integer createInfo(@RequestBody MbtiDTO mbti){
-        return mbtiService.createInfo(mbti);
+    public int createInfo(@RequestBody MbtiDTO mbti){
+        int check = mbtiService.createInfo(mbti);
+        if(check == 1) return 1;
+        return 0;
     }
 
     @DeleteMapping("/mbti/{id}")    //entity로 받지 말고 service에서 끝내는 방식 고안해보기
