@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: "jdbc:mysql://localhost/mbti"
+    url: "jdbc:mysql://localhost/mbti"  #데이터 베이스 mbti
     username: "root"
-    password: "qorenehf1"
+    password: ""
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:

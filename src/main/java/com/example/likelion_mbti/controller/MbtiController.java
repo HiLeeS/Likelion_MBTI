@@ -24,7 +24,7 @@ public class MbtiController {
     public Mbti getMbti(@PathVariable String mbti){
         Mbti newMbti = mbtiService.getMbti(mbti);
         if(newMbti == null) return null;
-        
+
         return newMbti;
     }
 
