@@ -3,12 +3,14 @@ package com.example.likelion_mbti.controller;
 import com.example.likelion_mbti.dto.MbtiDTO;
 import com.example.likelion_mbti.entity.Mbti;
 import com.example.likelion_mbti.service.MbtiService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
+@CrossOrigin
 @RestController
 public class MbtiController {
 
@@ -22,8 +24,10 @@ public class MbtiController {
 
     @GetMapping("/mbti/{mbti}")     //특정 MBTI의 특징 랜덤 추출, return 타입을 String으로 바꾸고 특징을 보낼 때 특징이 있으면 toString으로, 없으면 문자열로 없음 문자 보내기
     public Mbti getMbti(@PathVariable String mbti){
+        log.info(mbti.toString());
         Mbti newMbti = mbtiService.getMbti(mbti);
-        if(newMbti == null) return null;
+        log.info(newMbti.toString());
+        //if(newMbti == null) return null;
 
         return newMbti;
     }
