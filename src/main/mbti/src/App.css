@@ -97,4 +97,17 @@ input{
   color: black;
   font-weight: 800;
   box-shadow: 4px 4px 2px rgb(148, 148, 148);
+  margin-top: 20px;
+}
+.click{
+  width: 90px;
+  height: 90px;
+  margin: 8px;
+
+  border: none;
+  background-color: rgb(98, 151, 42);
+  border-radius: 7px;
+  font-size: 50px;
+  color: aliceblue;
+  outline-color: black;
 }
