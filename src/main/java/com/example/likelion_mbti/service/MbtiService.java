@@ -40,8 +40,10 @@ public class MbtiService {
         if(mb.getMbti() == null || mb.getInfo() == null){
             return 1;
         }
-        mbtiRepository.save(mb);
-        return 0;
+        else {
+            mbtiRepository.save(mb);
+            return 0;
+        }
     }
 
     public Mbti deleteMbti(Long id) {
